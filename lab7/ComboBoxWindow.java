@@ -9,21 +9,15 @@ import javax.swing.*;
 
 public class ComboBoxWindow extends JFrame
 {
-   private JPanel coffeePanel;         // To hold components
+   private JPanel airplanePanel;         // To hold components
    private JPanel selectedCoffeePanel; // To hold components
-   private JComboBox coffeeBox;        // A list of coffees
+   private JComboBox airplaneBox;        // A list of planes
    private JLabel label;               // Displays a message
-   private JTextField selectedCoffee;  // Selected coffee
+   private JTextField selectedCoffee;  // Selected plane
 
    // The following array holds the values that will
-   // be displayed in the coffeeBox combo box.
-   private String[] coffee = { "Regular Coffee",
-                     "Dark Roast", "Cappuccino",
-                     "Espresso", "Decaf"};
-
-   /**
-      Constructor
-   */
+   // be displayed in the airplanes combo box.
+   private String[] planes = { "707", "747", "Concorde"};
 
    public ComboBoxWindow()
    {
@@ -37,11 +31,11 @@ public class ComboBoxWindow extends JFrame
       setLayout(new BorderLayout());
 
       // Build the panels.
-      buildCoffeePanel();
+      buildAirplanePanel();
       buildSelectedCoffeePanel();
 
       // Add the panels to the content pane.
-      add(coffeePanel, BorderLayout.CENTER);
+      add(airplanePanel, BorderLayout.CENTER);
       
 
 	  ImageIcon icon = new ImageIcon("707.jpg");
@@ -58,23 +52,23 @@ public class ComboBoxWindow extends JFrame
    }
 
    /**
-      The buildCoffeePanel method adds a combo box 
-      with the types of coffee to a panel.
+      The buildAirplanePanel method adds a combo box 
+      with the types of planes to a panel.
    */
 
-   private void buildCoffeePanel()
+   private void buildAirplanePanel()
    {
       // Create a panel to hold the combo box.
-      coffeePanel = new JPanel();
+      airplanePanel = new JPanel();
 
       // Create the combo box
-      coffeeBox = new JComboBox(coffee);
+      airplaneBox = new JComboBox(planes);
 
       // Register an action listener.
-      coffeeBox.addActionListener(new ComboBoxListener());
+      airplaneBox.addActionListener(new ComboBoxListener());
 
       // Add the combo box to the panel.
-      coffeePanel.add(coffeeBox);
+      airplanePanel.add(airplaneBox);
    }
 
    /**
