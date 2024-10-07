@@ -3,123 +3,75 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-/**
-   This class demonstrates a combo box.
-*/
+public class ComboBoxWindow extends JFrame{
 
-public class ComboBoxWindow extends JFrame
-{
-   private JPanel airplanePanel;         // To hold components
-   private JPanel selectedCoffeePanel; // To hold components
-   private JComboBox airplaneBox;        // A list of planes
-   private JLabel label;               // Displays a message
-   private JTextField selectedCoffee;  // Selected plane
+	private JPanel airplanePanel;         // To hold components
+	private JComboBox airplaneBox;        // A list of planes
+	private JLabel selectedPlaneLabel;
+	ImageIcon icon_707;
+	ImageIcon icon_747;
+	ImageIcon icon_concorde;
+	boolean shown_img = false;
 
-   // The following array holds the values that will
-   // be displayed in the airplanes combo box.
-   private String[] planes = { "707", "747", "Concorde"};
+	// The following array holds the values that will
+	// be displayed in the airplanes combo box.
+	private String[] planes = { "707", "747", "Concorde"};
 
-   public ComboBoxWindow()
-   {
-      // Set the title.
-      setTitle("Combo Box Demo");
+	public ComboBoxWindow(){
 
-      // Specify an action for the close button.
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// Set the title.
+		setTitle("Combo Box Demo");
 
-      // Create a BorderLayout manager.
-      setLayout(new BorderLayout());
+		// Specify an action for the close button.
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-      // Build the panels.
-      buildAirplanePanel();
-      buildSelectedCoffeePanel();
+		// Create a BorderLayout manager.
+		setLayout(new BorderLayout());
 
-      // Add the panels to the content pane.
-      add(airplanePanel, BorderLayout.CENTER);
-      
+		// Build the panels.
+		buildAirplanePanel();
 
-	  ImageIcon icon = new ImageIcon("707.jpg");
+		// Add the panels to the content pane.
+		add(airplanePanel, BorderLayout.CENTER);
+		
+		// Pack and display the window.
+		pack();
+		setVisible(true);
+	}
 
-	  add(new JLabel(icon), BorderLayout.SOUTH);
+	private void buildSelectedAirplanePanel(){
+		ImageIcon icon_707 = new ImageIcon("707.jpg");
+		ImageIcon icon_747 = new ImageIcon("747.jpg");
+		ImageIcon icon_concorde = new ImageIcon("Concorde.jpg");
+		selectedPlaneLabel = new JLabel();
+	}
 
+	private void buildAirplanePanel(){
+		// Create a panel to hold the combo box.
+		airplanePanel = new JPanel();
 
-	  // add(selectedCoffeePanel, BorderLayout.SOUTH);
+		// Create the combo box
+		airplaneBox = new JComboBox(planes);
 
+		// Register an action listener.
+		airplaneBox.addActionListener(new ComboBoxListener());
 
-      // Pack and display the window.
-      pack();
-      setVisible(true);
-   }
+		// Add the combo box to the panel.
+		airplanePanel.add(airplaneBox);
+	}
 
-   /**
-      The buildAirplanePanel method adds a combo box 
-      with the types of planes to a panel.
-   */
+	public class ComboBoxListener implements ActionListener{
 
-   private void buildAirplanePanel()
-   {
-      // Create a panel to hold the combo box.
-      airplanePanel = new JPanel();
-
-      // Create the combo box
-      airplaneBox = new JComboBox(planes);
-
-      // Register an action listener.
-      airplaneBox.addActionListener(new ComboBoxListener());
-
-      // Add the combo box to the panel.
-      airplanePanel.add(airplaneBox);
-   }
-
-   /**
-      The buildSelectedCoffeePanel method adds a
-      read-only text field to a panel.
-   */
-
-   private void buildSelectedCoffeePanel()
-   {
-      // Create a panel to hold the components.
-      selectedCoffeePanel = new JPanel();
-
-      // Create the label.
-      label = new JLabel("You selected: ");
-
-      // Create the uneditable text field.
-      selectedCoffee = new JTextField(10);
-      selectedCoffee.setEditable(false);
-
-      // Add the label and text field to the panel.
-      selectedCoffeePanel.add(label);
-      selectedCoffeePanel.add(selectedCoffee);
-   }
-
-   /**
-      Private inner class that handles the event when
-      the user selects an item from the combo box.
-   */
-
-   public class ComboBoxListener
-                      implements ActionListener
-   {
-      public void actionPerformed(ActionEvent e)
-      {
-         // Get the selected coffee.
-         String selection =
-                 (String) coffeeBox.getSelectedItem();
-         
-         // Display the selected coffee in the text field.
-         selectedCoffee.setText(selection);
-      }
-   }
-
-   /**
-      The main method creates an instance of the
-      ComboBoxWindow class which causes it to display
-      its window.
-   */
+		public void actionPerformed(ActionEvent e){
+			// Get the selected plane.
+			String selection = (String) airplaneBox.getSelectedItem();
+			
+			// Display the selected plane image
+			System.out.println(selection);
+		}
+	}
    
-   public static void main(String[] args)
-   {
-      ComboBoxWindow cbw = new ComboBoxWindow();
-   }
+	public static void main(String[] args){
+		ComboBoxWindow cbw = new ComboBoxWindow();
+	}
 }
