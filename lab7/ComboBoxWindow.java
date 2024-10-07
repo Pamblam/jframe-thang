@@ -11,7 +11,6 @@ public class ComboBoxWindow extends JFrame{
 	ImageIcon icon_707;
 	ImageIcon icon_747;
 	ImageIcon icon_concorde;
-	boolean shown_img = false;
 
 	// The following array holds the values that will
 	// be displayed in the airplanes combo box.
@@ -30,10 +29,12 @@ public class ComboBoxWindow extends JFrame{
 
 		// Build the panels.
 		buildAirplanePanel();
-
+		buildSelectedAirplanePanel();
+		
 		// Add the panels to the content pane.
 		add(airplanePanel, BorderLayout.CENTER);
-		
+		add(selectedPlaneLabel, BorderLayout.SOUTH);
+
 		// Pack and display the window.
 		pack();
 		setVisible(true);
@@ -43,7 +44,7 @@ public class ComboBoxWindow extends JFrame{
 		ImageIcon icon_707 = new ImageIcon("707.jpg");
 		ImageIcon icon_747 = new ImageIcon("747.jpg");
 		ImageIcon icon_concorde = new ImageIcon("Concorde.jpg");
-		selectedPlaneLabel = new JLabel();
+		selectedPlaneLabel = new JLabel(icon_707);
 	}
 
 	private void buildAirplanePanel(){
