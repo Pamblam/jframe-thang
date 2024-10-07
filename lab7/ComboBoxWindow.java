@@ -45,11 +45,11 @@ public class ComboBoxWindow extends JFrame
       
 
 	  ImageIcon icon = new ImageIcon("707.jpg");
-	  
-	  add(new JLabel(icon), BorderLayout.CENTER);
+
+	  add(new JLabel(icon), BorderLayout.SOUTH);
 
 
-	  add(selectedCoffeePanel, BorderLayout.SOUTH);
+	  // add(selectedCoffeePanel, BorderLayout.SOUTH);
 
 
       // Pack and display the window.
