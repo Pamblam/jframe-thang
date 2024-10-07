@@ -30,7 +30,7 @@ public class ComboBoxWindow extends JFrame{
 		// Build the panels.
 		buildAirplanePanel();
 		buildSelectedAirplanePanel();
-		
+
 		// Add the panels to the content pane.
 		add(airplanePanel, BorderLayout.CENTER);
 		add(selectedPlaneLabel, BorderLayout.SOUTH);
@@ -41,9 +41,9 @@ public class ComboBoxWindow extends JFrame{
 	}
 
 	private void buildSelectedAirplanePanel(){
-		ImageIcon icon_707 = new ImageIcon("707.jpg");
-		ImageIcon icon_747 = new ImageIcon("747.jpg");
-		ImageIcon icon_concorde = new ImageIcon("Concorde.jpg");
+		icon_707 = new ImageIcon("707.jpg");
+		icon_747 = new ImageIcon("747.jpg");
+		icon_concorde = new ImageIcon("Concorde.jpg");
 		selectedPlaneLabel = new JLabel(icon_707);
 	}
 
@@ -67,8 +67,17 @@ public class ComboBoxWindow extends JFrame{
 			// Get the selected plane.
 			String selection = (String) airplaneBox.getSelectedItem();
 			
-			// Display the selected plane image
-			System.out.println(selection);
+			if ("707".equals(selection)) {
+				System.out.println("asdffff");
+				selectedPlaneLabel.setIcon(icon_707);
+			} else if ("747".equals(selection)) {
+				System.out.println("asdf");
+				selectedPlaneLabel.setIcon(icon_747);
+			} else if ("Concorde".equals(selection)) {
+				System.out.println("sadf");
+				selectedPlaneLabel.setIcon(icon_concorde);
+			}
+
 		}
 	}
    
